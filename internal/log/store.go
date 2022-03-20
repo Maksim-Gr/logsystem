@@ -84,3 +84,14 @@ func (s *store) ReaderAt(p []byte, off int64) (int, error) {
 	}
 	return s.File.ReadAt(p, off)
 }
+
+func (s *store) Close() error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	err := s.buf.Flush()
+	if err != nil {
+		return err
+	}
+	return s.File.Close()
+}
