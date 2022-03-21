@@ -16,3 +16,7 @@ type index struct {
 	file *os.File
 	mmap gommap.MMap
 }
+
+// func newIndex(f *os.File, c Config) (*index, error) {
+
+// }
