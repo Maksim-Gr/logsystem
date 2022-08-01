@@ -69,7 +69,10 @@ func (i *index) Write(off uint32, pos uint64) error {
 	enc.PutUint64(i.mmap[i.size+offWidth:i.size+endWidth], pos)
 	i.size += endWidth
 	return nil
+}
 
+func (i *index) Name() string {
+	return i.file.Name()
 }
 
 func (i *index) Close() error {
